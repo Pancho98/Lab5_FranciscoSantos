@@ -11,7 +11,7 @@ package lab5_francisicosantos;
  */
 public class Jugador {
     private String nombre;
-    private int preio;
+    private int precio;
     private String Posicion;
     private boolean disponibilidad;
     private String habilidad;
@@ -21,9 +21,9 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(String nombre, int preio, String Posicion, boolean disponibilidad, String habilidad, String tecnica, String resistencia) {
+    public Jugador(String nombre, int precio, String Posicion, boolean disponibilidad, String habilidad, String tecnica, String resistencia) {
         this.nombre = nombre;
-        this.preio = preio;
+        this.precio = precio;
         this.Posicion = Posicion;
         this.disponibilidad = disponibilidad;
         this.habilidad = habilidad;
@@ -39,12 +39,12 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public int getPreio() {
-        return preio;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setPreio(int preio) {
-        this.preio = preio;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public String getPosicion() {
