@@ -73,6 +73,8 @@ public class Principal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jd_ListarLiga = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jt_equipos = new javax.swing.JTree();
         jd_ModificarEquipo = new javax.swing.JDialog();
         jLabel23 = new javax.swing.JLabel();
         tf_nombreE1 = new javax.swing.JTextField();
@@ -387,15 +389,25 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Liga Española");
+        jt_equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane5.setViewportView(jt_equipos);
+
         javax.swing.GroupLayout jd_ListarLigaLayout = new javax.swing.GroupLayout(jd_ListarLiga.getContentPane());
         jd_ListarLiga.getContentPane().setLayout(jd_ListarLigaLayout);
         jd_ListarLigaLayout.setHorizontalGroup(
             jd_ListarLigaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_ListarLigaLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jd_ListarLigaLayout.setVerticalGroup(
             jd_ListarLigaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ListarLigaLayout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         jLabel23.setText("Nombre del Equipo");
@@ -1006,6 +1018,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JDialog jd_AgregarEquipo;
     private javax.swing.JDialog jd_AgregarJugador;
     private javax.swing.JDialog jd_ComprarJugador;
@@ -1018,6 +1031,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JList<Jugador> jl_CompraJ;
     private javax.swing.JList<Jugador> jl_Jugadores;
     private javax.swing.JList<Equipo> jl_equipos;
+    private javax.swing.JTree jt_equipos;
     private javax.swing.JPopupMenu pop_jugadores;
     private javax.swing.JMenuItem pp_SacarJugador;
     private javax.swing.JMenuItem pp_propiedades;
