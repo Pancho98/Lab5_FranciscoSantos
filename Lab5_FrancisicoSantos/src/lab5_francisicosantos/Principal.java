@@ -103,6 +103,11 @@ public class Principal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jd_ComprarJugador = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_CompraE = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jl_CompraJ = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
         pop_jugadores = new javax.swing.JPopupMenu();
         pp_propiedades = new javax.swing.JMenuItem();
         pp_SacarJugador = new javax.swing.JMenuItem();
@@ -573,15 +578,44 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(49, 49, 49))
         );
 
+        jl_CompraE.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(jl_CompraE);
+
+        jl_CompraJ.setModel(new DefaultListModel());
+        jScrollPane4.setViewportView(jl_CompraJ);
+
+        jButton2.setText("Comprar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_ComprarJugadorLayout = new javax.swing.GroupLayout(jd_ComprarJugador.getContentPane());
         jd_ComprarJugador.getContentPane().setLayout(jd_ComprarJugadorLayout);
         jd_ComprarJugadorLayout.setHorizontalGroup(
             jd_ComprarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGroup(jd_ComprarJugadorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(jd_ComprarJugadorLayout.createSequentialGroup()
+                .addGap(267, 267, 267)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_ComprarJugadorLayout.setVerticalGroup(
             jd_ComprarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(jd_ComprarJugadorLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addGroup(jd_ComprarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addComponent(jButton2)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pp_propiedades.setText("Propiedades");
@@ -652,6 +686,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 255, 0));
         jLabel8.setText("Comprar Jugador");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab5_francisicosantos/foot2.jpg"))); // NOI18N
@@ -702,6 +741,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel modelo = (DefaultListModel)jl_Jugadores.getModel();
         modelo.addElement(j);
         jl_Jugadores.setModel(modelo);
+        jl_CompraJ.setModel(modelo);
         //
         JOptionPane.showMessageDialog(null, "El jugador se agrego con exito");
         //
@@ -719,6 +759,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel modelo1 = (DefaultListModel)jl_equipos.getModel();
         modelo1.addElement(e);
         jl_equipos.setModel(modelo1);
+        jl_CompraE.setModel(modelo1);
         //
         JOptionPane.showMessageDialog(null, "El Equipo Se Agrego con Exito");
         //
@@ -754,8 +795,11 @@ public class Principal extends javax.swing.JFrame {
         jugador_seleccionado.setTecnica(tf_tecnica1.getText());
         jugador_seleccionado.setResistencia(tf_resistencia1.getText());
         DefaultListModel model = (DefaultListModel)jl_Jugadores.getModel();
+        DefaultListModel model2=(DefaultListModel)jl_CompraJ.getModel();
         model.remove(jl_Jugadores.getSelectedIndex());
+        model2.remove(jl_Jugadores.getSelectedIndex());
         model.addElement(jugador_seleccionado);
+        model2.addElement(jugador_seleccionado);
         //
         tf_nombreJ1.setText("");
         tf_precio1.setText("");
@@ -789,8 +833,11 @@ public class Principal extends javax.swing.JFrame {
         equipo_seleccionado.setEstadio(tf_estadio1.getText());
         //
         DefaultListModel model = (DefaultListModel)jl_equipos.getModel();
+        DefaultListModel modelo2 = (DefaultListModel)jl_CompraE.getModel();
         model.remove(jl_equipos.getSelectedIndex());
+        modelo2.remove(jl_equipos.getSelectedIndex());
         model.addElement(equipo_seleccionado);
+        modelo2.addElement(equipo_seleccionado);
         //
         jd_ModificarEquipo.dispose();
     }//GEN-LAST:event_bt_modEquiposMouseClicked
@@ -798,8 +845,12 @@ public class Principal extends javax.swing.JFrame {
     private void bt_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_jugadoresMouseClicked
         if (jl_Jugadores.getSelectedIndex()>=0) {
             DefaultListModel modelo = (DefaultListModel)jl_Jugadores.getModel();
+            DefaultListModel modelo2 = (DefaultListModel)jl_CompraJ.getModel();
             modelo.remove(jl_Jugadores.getSelectedIndex());
+            modelo2.remove(jl_Jugadores.getSelectedIndex());
             jl_Jugadores.setModel(modelo);
+            jl_CompraJ.setModel(modelo2);
+            
         }else{
             JOptionPane.showMessageDialog(null, "No tiene nada selecionado");
         }
@@ -808,8 +859,12 @@ public class Principal extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         if (jl_equipos.getSelectedIndex()>=0) {
             DefaultListModel modelo = (DefaultListModel)jl_equipos.getModel();
+            DefaultListModel modelo2 = (DefaultListModel)jl_CompraE.getModel();
             modelo.remove(jl_equipos.getSelectedIndex());
+            modelo2.remove(jl_equipos.getSelectedIndex());
             jl_equipos.setModel(modelo);
+            jl_CompraE.setModel(modelo2);
+            
         }else{
             JOptionPane.showMessageDialog(null, "No tiene nada selecionado");
         }
@@ -822,6 +877,29 @@ public class Principal extends javax.swing.JFrame {
     private void pp_propiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp_propiedadesActionPerformed
         
     }//GEN-LAST:event_pp_propiedadesActionPerformed
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        jd_ComprarJugador.pack();
+        jd_ComprarJugador.setModal(true);
+        jd_ComprarJugador.setVisible(true);
+        jd_ComprarJugador.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        jugador_seleccionado=(Jugador)jl_CompraJ.getSelectedValue();
+        equipo_seleccionado = (Equipo) jl_CompraE.getSelectedValue();
+        if (jl_CompraE.getSelectedIndex()>=0 && jl_CompraJ.getSelectedIndex()>=0) {
+            
+            int total;
+            total=equipo_seleccionado.getPresupuesto()-jugador_seleccionado.getPrecio();
+            equipo_seleccionado.setPresupuesto(total);
+            if (total>=0) {
+                equipo_seleccionado.getJugadores().add(jugador_seleccionado);
+            }else{
+                JOptionPane.showMessageDialog(null, "No le ajusta el money papu");
+            }
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     public void reload(){
             jugador_seleccionado=(Jugador)jl_Jugadores.getSelectedValue();
@@ -880,6 +958,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_pos;
     private javax.swing.JComboBox<String> cb_pos1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -922,6 +1001,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JDialog jd_AgregarEquipo;
     private javax.swing.JDialog jd_AgregarJugador;
     private javax.swing.JDialog jd_ComprarJugador;
@@ -930,6 +1011,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_ListarLiga;
     private javax.swing.JDialog jd_ModificarEquipo;
     private javax.swing.JDialog jd_ModificarJugador;
+    private javax.swing.JList<Equipo> jl_CompraE;
+    private javax.swing.JList<Jugador> jl_CompraJ;
     private javax.swing.JList<Jugador> jl_Jugadores;
     private javax.swing.JList<Equipo> jl_equipos;
     private javax.swing.JPopupMenu pop_jugadores;
