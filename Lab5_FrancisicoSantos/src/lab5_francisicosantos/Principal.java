@@ -888,13 +888,16 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         jugador_seleccionado=(Jugador)jl_CompraJ.getSelectedValue();
         equipo_seleccionado = (Equipo) jl_CompraE.getSelectedValue();
+        DefaultListModel modelo = (DefaultListModel)jl_CompraJ.getModel();
         if (jl_CompraE.getSelectedIndex()>=0 && jl_CompraJ.getSelectedIndex()>=0) {
             
             int total;
             total=equipo_seleccionado.getPresupuesto()-jugador_seleccionado.getPrecio();
             equipo_seleccionado.setPresupuesto(total);
+            modelo.remove(jl_CompraJ.getSelectedIndex());
             if (total>=0) {
                 equipo_seleccionado.getJugadores().add(jugador_seleccionado);
+                JOptionPane.showMessageDialog(null, "Jugador comprado con exito");
             }else{
                 JOptionPane.showMessageDialog(null, "No le ajusta el money papu");
             }
