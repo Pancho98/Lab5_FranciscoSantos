@@ -816,11 +816,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jl_JugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_JugadoresMouseClicked
-        if (evt.isMetaDown()) {
-            if (jl_Jugadores.isSelectedIndex(jl_Jugadores.getSelectedIndex())) {
-                pop_jugadores.show(evt.getComponent(), evt.getX(), evt.getY());
-            } 
-        }
+        
     }//GEN-LAST:event_jl_JugadoresMouseClicked
 
     private void pp_propiedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp_propiedadesActionPerformed
